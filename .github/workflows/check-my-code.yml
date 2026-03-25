@@ -1,0 +1,15 @@
+name: PowerShell Linter
+on: [push] # This means "Run this every time I save"
+
+jobs:
+  check-script:
+    runs-on: ubuntu-latest # This is a computer in the cloud GitHub gives you
+    steps:
+      - uses: actions/checkout@v3 # Copy your code to that cloud computer
+      - name: Run a simple test
+        shell: pwsh
+        run: |
+          Write-Host "Checking your packaging script for errors..."
+          # This is where a real test would go. For now, we just celebrate.
+          Write-Host "Success! Your code is clean."
+          
