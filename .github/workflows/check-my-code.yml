@@ -5,7 +5,7 @@ jobs:
   check-script:
     runs-on: ubuntu-latest # This is a computer in the cloud GitHub gives you
     steps:
-      - uses: actions/checkout@v3 # Copy your code to that cloud computer
+      - uses: actions/checkout@v4 # Copy your code to that cloud computer
       - name: Run a simple test
         shell: pwsh
         run: |
