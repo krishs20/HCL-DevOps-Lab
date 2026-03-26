@@ -5,11 +5,13 @@ jobs:
   check-script:
     runs-on: ubuntu-latest # This is a computer in the cloud GitHub gives you
     steps:
-      - uses: actions/checkout@v4 # Copy your code to that cloud computer
-      - name: Run a simple test
+      - uses: actions/checkout@v4
+      - name: Validate Packaging Standards
         shell: pwsh
         run: |
-          Write-Host "Checking your packaging script for errors..."
-          # This is where a real test would go. For now, we just celebrate.
-          Write-Host "Success! Your code is clean."
-          
+          if (Test-Path "README.md") {
+              Write-Host "Standard Met: README exists."
+          } else {
+              Write-Error "CRITICAL FAILURE: README.md is missing!"
+              exit 1
+          }
