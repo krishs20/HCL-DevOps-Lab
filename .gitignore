@@ -16,3 +16,40 @@ temp_psadt/
 *.log
 *.tmp
 .vscode/
+# --- System & IDE Junk ---
+.DS_Store
+.vscode/
+Thumbs.db
+
+# --- Temporary/Draft Folders ---
+temp_psadt/
+*.log
+*.tmp
+*.zip
+
+# --- THE WHITELIST STRATEGY ---
+# 1. Ignore EVERYTHING inside the packages directory
+packages/**/*
+
+# 2. Allow the "Brain" (The Script)
+!packages/**/Invoke-AppDeployToolkit.ps1
+
+# 3. Allow the "Launcher" (The EXE wrapper)
+!packages/**/Invoke-AppDeployToolkit.exe
+
+# 4. Allow the "Engine" (The Toolkit Logic)
+!packages/**/AppDeployToolkit/
+# Ignore the heavy documentation inside the toolkit
+packages/**/AppDeployToolkit/Doc/*
+
+# 5. Allow the folder structure (keeping them empty in the cloud)
+!packages/**/Files/
+!packages/**/SupportFiles/
+!packages/**/.gitkeep
+
+# --- THE HARD BARRIER ---
+# Explicitly block heavy installers globally
+*.msi
+*.cab
+*.msp
+# Exception: We already whitelisted the Launcher above
